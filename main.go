@@ -1,5 +1,9 @@
 package main
 
+import (
+	"bookings-app/cmd"
+)
+
 // Rundown of the project
 /*
 Conference app via CLI that allows users to:
@@ -25,5 +29,44 @@ Conference app via CLI that allows users to:
 2. Make it a TUI program AND a CLI ? :)
 */
 
+type User struct {
+	firstName        string
+	lastName         string
+	email            string
+	ticketsPurchased uint
+}
+
+type Conference struct {
+	conferenceName     string
+	conferenceLocation string
+	availableTickets   uint
+}
+
+var conferences = []Conference{}
+
 func main() {
+	cmd.Execute()
+}
+
+// TODO: Eventually change these so they come from a json file
+func generateConferences() []Conference {
+	conferences = append(conferences, Conference{
+		conferenceName:     "GoConf Toronto",
+		conferenceLocation: "Toronto",
+		availableTickets:   10,
+	})
+
+	conferences = append(conferences, Conference{
+		conferenceName:     "GoConf Global",
+		conferenceLocation: "London",
+		availableTickets:   10,
+	})
+
+	conferences = append(conferences, Conference{
+		conferenceName:     "GoLand",
+		conferenceLocation: "Singapure",
+		availableTickets:   10,
+	})
+
+	return conferences
 }
