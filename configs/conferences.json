@@ -1,13 +1,17 @@
 [
-	{
-		"conferenceName":     "GoConf Toronto",
-		"conferenceLocation": "Toronto",
-		"availableTickets":   10
-	},
-	{
-		"conferenceName":     "GoConf Toronto",
-		"conferenceLocation": "Toronto",
-		"availableTickets":   10
-	}
-
+ {
+  "conferenceName": "GoConf Toronto",
+  "conferenceLocation": "Toronto",
+  "availableTickets": 10
+ },
+ {
+  "conferenceName": "GoConf Global",
+  "conferenceLocation": "Singapore",
+  "availableTickets": 10
+ },
+ {
+  "conferenceName": "GoLand",
+  "conferenceLocation": "USA",
+  "availableTickets": 0
+ }
 ]
