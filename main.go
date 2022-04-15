@@ -31,6 +31,6 @@ Conference app via CLI that allows users to:
 */
 
 func main() {
-    utils.ReadConfigFile()
-	cmd.Execute()
+		utils.ReadConfigFile()
+		cmd.Execute()
 }

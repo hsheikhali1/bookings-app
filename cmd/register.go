@@ -33,10 +33,6 @@ func register(args []string, cmd *cobra.Command) {
 
 	conferences := new(utils.Conferences)
 
-	// get number of tickets
-	// get conference name
-	// save this to a file or something, then run `./app purchase` to simulate a purchased ticket command
-
 	if name != "" {
 		conferenceName, err := getConferenceByName(name, conferences.GenerateConferences())
 
@@ -49,11 +45,9 @@ func register(args []string, cmd *cobra.Command) {
 		conferences.PurchaseTickets(conferenceName, tickets)
 
 	} else if list {
-		fmt.Println(conferences.GenerateConferences())
+		availableConferences := getAvailableConferences(conferences.GenerateConferences())
+		fmt.Println(availableConferences)
 	} else {
-
-		// validate that conference is a legit conference
-		// if not, return error, else you're good
 
 		if len(args) <= 0 {
 			fmt.Println("No arguments were passed into the register command. For help run `bookingapp help`")
@@ -76,6 +70,7 @@ func register(args []string, cmd *cobra.Command) {
 	}
 }
 
+// Get conference by name
 func getConferenceByName(name string, conferences []utils.Conference) (string, error) {
 	var confName string
 	var error error = nil
@@ -91,6 +86,19 @@ func getConferenceByName(name string, conferences []utils.Conference) (string, e
 	}
 
 	return confName, error
+}
+
+// get all available conferences
+func getAvailableConferences(conferences []utils.Conference) []utils.Conference {
+	var availableConferences []utils.Conference
+
+	for _, conference := range conferences {
+		if conference.AvailableTickets != 0 {
+			availableConferences = append(availableConferences, conference)
+		}
+	}
+
+	return availableConferences
 }
 
 func run(cmd *cobra.Command, args []string) {
